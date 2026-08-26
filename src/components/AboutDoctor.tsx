@@ -11,14 +11,14 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
     /* SEÇÃO COM AZUL SUAVE (#edf4fa) */
     <section id="sobre" className="relative py-12 md:py-24 bg-[#edf4fa] text-slate-900 overflow-hidden border-y border-sky-100 min-h-[700px] flex items-center">
       
-      {/* 🖼️ FOTO DA DRA. CAREN NO FUNDO */}
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+      {/* 📱 1. MOBILE: FOTO E GRADIENTE 100% INALTERADOS (NÃO MEXIDO CONFORME PEDIDO) */}
+      <div className="block lg:hidden absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <img 
           src="/dra-caren.webp" 
           alt="Dra. Caren Stefany - Fonoaudióloga" 
           loading="eager"
           decoding="async"
-          className="w-full h-full object-cover object-top lg:object-[16%_top] filter brightness-100 contrast-105"
+          className="w-full h-full object-cover object-top filter brightness-100 contrast-105"
           onError={(e) => {
             const target = e.currentTarget;
             if (!target.dataset.triedFallback) {
@@ -27,19 +27,36 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
             }
           }}
         />
+        {/* Gradiente Mobile exatamente como estava */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#edf4fa]/80 via-38% to-[#edf4fa] to-55%" />
+      </div>
 
-        {/* Gradiente no Mobile: Topo transparente para ver o rosto, e transição suave para o azul #edf4fa onde ficam os textos */}
-        <div className="block lg:hidden absolute inset-0 bg-gradient-to-b from-transparent via-[#edf4fa]/80 via-38% to-[#edf4fa] to-55%" />
-        
-        {/* Gradiente Desktop: fade suave da foto para o azul na direita */}
-        <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-transparent via-[#edf4fa]/80 via-45% to-[#edf4fa] to-65%" />
+      {/* 💻 2. DESKTOP: FOTO RESTRITA EXCLUSIVAMENTE AO LADO ESQUERDO (NUNCA COBRE O TEXTO) */}
+      <div className="hidden lg:block absolute left-0 top-0 bottom-0 w-[42%] z-0 pointer-events-none overflow-hidden">
+        <img 
+          src="/dra-caren.webp" 
+          alt="Dra. Caren Stefany - Fonoaudióloga" 
+          loading="eager"
+          decoding="async"
+          className="w-full h-full object-cover object-[center_top] filter brightness-100 contrast-105"
+          onError={(e) => {
+            const target = e.currentTarget;
+            if (!target.dataset.triedFallback) {
+              target.dataset.triedFallback = 'true';
+              target.src = '/caren-stefany.jpg';
+            }
+          }}
+        />
+        {/* Gradiente suave que funde a foto no fundo azul suave antes do texto da direita começar */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#edf4fa]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#edf4fa]/30 via-transparent to-[#edf4fa]/50" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start pt-2 lg:pt-0">
           
-          {/* TOPO NO MOBILE (ESPAÇO DO LUSTRE) / ESQUERDA NO DESKTOP: CARTÃO DE INFORMAÇÕES */}
-          <div className="lg:col-span-5 space-y-4">
+          {/* LADO ESQUERDO: CARTÃO NO TOPO NO MOBILE / NA ESQUERDA NO DESKTOP (POSICIONADO NA PARTE INFERIOR NO DESKTOP PARA O ROSTO FICAR 100% LIVRE NO TOPO) */}
+          <div className="lg:col-span-5 space-y-4 lg:self-end lg:pb-4">
             <motion.div 
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -47,7 +64,7 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
               transition={{ duration: 0.5 }}
               className="w-full max-w-sm sm:max-w-md mx-auto lg:mx-0"
             >
-              {/* CARTÃO DE INFORMAÇÕES DA DOUTORA NO TOPO */}
+              {/* CARTÃO DE INFORMAÇÕES DA DOUTORA */}
               <div className="bg-white/95 backdrop-blur-xl p-4 sm:p-5 rounded-2xl border border-sky-100 shadow-md text-slate-900 space-y-2.5">
                 <div className="flex items-center justify-between gap-2">
                   <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-950 border border-emerald-300 text-[11px] font-extrabold uppercase tracking-wider">
@@ -88,7 +105,7 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
             </motion.div>
           </div>
 
-          {/* LADO DIREITO: TEXTO LIMPO, SEM NENHUM CAIXOTE BRANCO COBRINDO A TELA, DIRETO NO AZUL SUAVE COM LETRAS PRETAS */}
+          {/* LADO DIREITO: TEXTO LIMPO NO AZUL SUAVE - NO DESKTOP NUNCA PASSA POR CIMA DO ROSTO DELA */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
