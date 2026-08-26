@@ -1,6 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Activity, ShieldCheck, Heart, Stethoscope, ChevronRight, CheckCircle, FileSpreadsheet, Sparkles, Home } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Activity, ShieldCheck, Heart, Stethoscope, ChevronLeft, ChevronRight, CheckCircle, FileSpreadsheet, Home } from 'lucide-react';
 
 interface ServiceItem {
   id: string;
@@ -17,10 +17,12 @@ interface ServicesProps {
 }
 
 export const Services: React.FC<ServicesProps> = ({ onOpenTriagingModal }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
   const services: ServiceItem[] = [
     {
       id: 'disfagia-domiciliar',
-      icon: <Activity className="w-6 h-6 text-navy-900" />,
+      icon: <Activity className="w-6 h-6 text-emerald-600" />,
       tag: 'Atendimento Domiciliar',
       title: 'Tratamento de Disfagia em Domicílio',
       subtitle: 'Reabilitação da deglutição de líquidos, sólidos e pastosos na mesa da sua casa',
@@ -34,7 +36,7 @@ export const Services: React.FC<ServicesProps> = ({ onOpenTriagingModal }) => {
     },
     {
       id: 'neurologia-domiciliar',
-      icon: <Stethoscope className="w-6 h-6 text-navy-900" />,
+      icon: <Stethoscope className="w-6 h-6 text-emerald-600" />,
       tag: 'Atendimento Domiciliar',
       title: 'Fonoaudiologia Neurofuncional no Lar',
       subtitle: 'Reabilitação pós-AVC, Parkinson, Alzheimer e Demências na residência',
@@ -62,7 +64,7 @@ export const Services: React.FC<ServicesProps> = ({ onOpenTriagingModal }) => {
     },
     {
       id: 'alimentacao-segura-domiciliar',
-      icon: <Heart className="w-6 h-6 text-navy-900" />,
+      icon: <Heart className="w-6 h-6 text-emerald-600" />,
       tag: 'Capacitação na Cozinha do Lar',
       title: 'Orientação de Alimentação Segura para Cuidadores',
       subtitle: 'Capacitação presencial na cozinha da família para quem cuida do idoso',
@@ -76,113 +78,201 @@ export const Services: React.FC<ServicesProps> = ({ onOpenTriagingModal }) => {
     }
   ];
 
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev === 0 ? services.length - 1 : prev - 1));
+  };
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev === services.length - 1 ? 0 : prev + 1));
+  };
+
   return (
-    <section id="servicos" className="py-20 md:py-28 bg-white relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="servicos" className="py-16 md:py-24 bg-white relative overflow-hidden">
+      {/* Background soft ambient accents */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[450px] bg-sky-100/40 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Title Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-200 text-xs font-bold uppercase tracking-wider">
-            <Home className="w-3.5 h-3.5 text-emerald-600" />
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 space-y-3 sm:space-y-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100 text-emerald-950 border border-emerald-300 text-xs font-bold uppercase tracking-wider">
+            <Home className="w-3.5 h-3.5 text-emerald-700" />
             <span>Todos os Atendimentos São Realizados em Domicílio</span>
           </div>
           
-          <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-slate-900 tracking-tight">
-            Serviços fonoaudiológicos prestados <span className="text-navy-900 underline decoration-emerald-400 decoration-4">na sua casa</span>.
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-display font-extrabold text-navy-950 tracking-tight">
+            Serviços fonoaudiológicos prestados <span className="text-navy-950 underline decoration-emerald-400 decoration-4">na sua casa</span>.
           </h2>
           
-          <p className="text-base text-slate-600 font-normal">
-            Atendimento presencial no lar em <strong className="text-slate-900 font-semibold">Itatiba, Bragança Paulista, Morungaba e região</strong>.
+          <p className="text-sm sm:text-base text-slate-700 font-medium">
+            Atendimento presencial no lar em <strong className="text-navy-950 font-bold">Itatiba, Bragança Paulista, Morungaba e região</strong>.
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.id}
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-3xl p-7 sm:p-8 border border-slate-200/80 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
-            >
-              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-navy-900 via-navy-700 to-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+        {/* 📱 CARROSSEL 3D COVERFLOW COM CONTROLES */}
+        <div className="relative max-w-2xl mx-auto">
+          
+          {/* Container dos Cards com Suporte a Swipe / Arrastar */}
+          <div className="relative min-h-[580px] sm:min-h-[540px] flex items-center justify-center">
+            <AnimatePresence mode="popLayout">
+              {services.map((service, index) => {
+                const offset = index - currentIndex;
+                const isActive = offset === 0;
+                const isLeft = offset === -1 || (currentIndex === 0 && index === services.length - 1);
+                const isRight = offset === 1 || (currentIndex === services.length - 1 && index === 0);
 
-              <div>
-                <div className="flex items-center justify-between mb-6">
-                  <div className="w-12 h-12 rounded-2xl bg-navy-50 border border-navy-100 flex items-center justify-center group-hover:bg-navy-900 group-hover:text-white transition-colors">
-                    {service.icon}
-                  </div>
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 flex items-center gap-1.5">
-                    <Home className="w-3 h-3 text-emerald-600" />
-                    <span>{service.tag}</span>
-                  </span>
-                </div>
+                // Mostra o ativo e os dois vizinhos em perspectiva
+                const isVisible = isActive || isLeft || isRight;
+                if (!isVisible) return null;
 
-                <h3 className="text-xl sm:text-2xl font-bold font-display text-slate-900 mb-1 group-hover:text-navy-900 transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-xs font-semibold text-emerald-800 mb-4">
-                  {service.subtitle}
-                </p>
+                let xPos = 0;
+                if (isLeft) xPos = -70; // percentual de recuo na esquerda
+                if (isRight) xPos = 70; // percentual de recuo na direita
 
-                <p className="text-xs sm:text-sm text-slate-600 mb-6 leading-relaxed">
-                  {service.description}
-                </p>
+                return (
+                  <motion.div
+                    key={service.id}
+                    initial={{ opacity: 0, scale: 0.85, x: xPos * 1.5 }}
+                    animate={{
+                      opacity: isActive ? 1 : 0.35,
+                      scale: isActive ? 1 : 0.88,
+                      x: `${xPos}%`,
+                      zIndex: isActive ? 30 : 10,
+                      rotateY: isLeft ? 8 : isRight ? -8 : 0,
+                    }}
+                    exit={{ opacity: 0, scale: 0.8, x: xPos * 1.5 }}
+                    transition={{ type: 'spring', stiffness: 260, damping: 26 }}
+                    drag={isActive ? 'x' : false}
+                    dragConstraints={{ left: 0, right: 0 }}
+                    dragElastic={0.2}
+                    onDragEnd={(_, { offset: dragOffset, velocity }) => {
+                      const swipe = Math.abs(dragOffset.x) * velocity.x;
+                      if (swipe < -80 || dragOffset.x < -50) {
+                        nextSlide();
+                      } else if (swipe > 80 || dragOffset.x > 50) {
+                        prevSlide();
+                      }
+                    }}
+                    onClick={() => {
+                      if (isLeft) prevSlide();
+                      if (isRight) nextSlide();
+                    }}
+                    className={`absolute w-full max-w-[92%] sm:max-w-lg cursor-pointer ${
+                      isActive ? 'cursor-default' : 'hover:opacity-60 transition-opacity'
+                    }`}
+                  >
+                    <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-2xl space-y-5 text-left">
+                      
+                      {/* Top Header Card: Icon + Badge */}
+                      <div className="flex items-center justify-between gap-3">
+                        <div className="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-200/80 flex items-center justify-center shrink-0">
+                          {service.icon}
+                        </div>
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-950 border border-emerald-200 text-xs font-bold uppercase tracking-wider">
+                          <Home className="w-3 h-3 text-emerald-700" />
+                          <span>{service.tag}</span>
+                        </span>
+                      </div>
 
-                <ul className="space-y-2.5 mb-8">
-                  {service.highlights.map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-2.5 text-xs text-slate-700 font-medium">
-                      <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                      {/* Title & Subtitle */}
+                      <div>
+                        <h3 className="text-xl sm:text-2xl font-bold font-display text-navy-950 leading-snug">
+                          {service.title}
+                        </h3>
+                        <p className="text-xs text-emerald-800 font-bold mt-1">
+                          {service.subtitle}
+                        </p>
+                      </div>
 
-              {/* Action Button */}
-              <div className="pt-2">
-                <button
-                  onClick={() => onOpenTriagingModal && onOpenTriagingModal(service.title)}
-                  className="w-full inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-3.5 px-4 rounded-xl transition-all shadow-md group-hover:shadow-lg cursor-pointer active:scale-[0.99]"
-                >
-                  <FileSpreadsheet className="w-4 h-4" />
-                  <span>Fazer Triagem Domiciliar (1 min)</span>
-                  <ChevronRight className="w-4 h-4 ml-auto" />
-                </button>
-              </div>
+                      {/* Description */}
+                      <p className="text-xs sm:text-sm text-slate-800 font-medium leading-relaxed">
+                        {service.description}
+                      </p>
 
-            </motion.div>
-          ))}
-        </div>
+                      {/* Highlights Checkmark List */}
+                      <div className="pt-2 border-t border-slate-100 space-y-2.5">
+                        {service.highlights.map((highlight, idx) => (
+                          <div key={idx} className="flex items-start gap-2.5">
+                            <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                            <span className="text-xs sm:text-sm text-slate-900 font-medium leading-tight">
+                              {highlight}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
 
-        {/* Soft Light Banner Callout */}
-        <div className="mt-12 bg-gradient-to-r from-sky-50/80 via-white to-emerald-50/80 rounded-3xl p-8 sm:p-10 text-slate-900 border border-slate-200/90 shadow-lg relative overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-            <div className="lg:col-span-8 space-y-3">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold uppercase tracking-wider border border-emerald-200">
-                <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-                <span>Atendimento no Próprio Lar (Itatiba, Bragança & Morungaba)</span>
-              </div>
-              <h3 className="text-2xl sm:text-3xl font-bold font-display text-slate-900">
-                Segurança, praticidade e reabilitação na rotina real da família.
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Na clínica, o idoso fica tenso e fora da sua rotina. No <strong className="text-navy-900">Atendimento Domiciliar</strong>, a Dra. Caren avalia a postura na cadeira que o paciente usa todos os dias, a textura das comidas que a família prepara e capacita quem cuida diretamente no lar.
-              </p>
+                      {/* CTA Button */}
+                      <div className="pt-2">
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onOpenTriagingModal && onOpenTriagingModal(service.title);
+                          }}
+                          className="w-full inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm px-6 py-3.5 rounded-xl shadow-md hover:shadow-emerald-600/20 transition-all cursor-pointer active:scale-[0.99]"
+                        >
+                          <FileSpreadsheet className="w-4 h-4" />
+                          <span>Fazer Triagem Domiciliar (1 min)</span>
+                        </button>
+                      </div>
+
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
+          </div>
+
+          {/* 🔢 NÚMERO GRANDE + CONTADOR (Exatamente igual ao print enviado: 01 DE 04) */}
+          <div className="text-center mt-6 sm:mt-8 space-y-1">
+            <div className="text-4xl sm:text-5xl font-black text-navy-950 font-display tracking-tight">
+              {String(currentIndex + 1).padStart(2, '0')}
             </div>
-
-            <div className="lg:col-span-4 flex flex-col gap-3">
-              <button
-                onClick={() => onOpenTriagingModal && onOpenTriagingModal('Triagem Domiciliar Geral')}
-                className="w-full inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm py-4 px-6 rounded-xl transition-all shadow-md text-center cursor-pointer active:scale-[0.99]"
-              >
-                <FileSpreadsheet className="w-5 h-5" />
-                <span>Fazer Triagem Domiciliar</span>
-              </button>
+            <div className="text-[11px] sm:text-xs font-extrabold uppercase tracking-widest text-emerald-700">
+              DE {String(services.length).padStart(2, '0')}
             </div>
           </div>
+
+          {/* 🕹️ DOCK DE NAVEGAÇÃO: SETAS + BOLINHAS COM PÍLULA ATIVA (Idêntico ao print) */}
+          <div className="flex justify-center mt-4">
+            <div className="inline-flex items-center gap-3 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-full border border-slate-200/90 shadow-lg">
+              
+              {/* Botão Anterior */}
+              <button
+                onClick={prevSlide}
+                aria-label="Serviço anterior"
+                className="w-9 h-9 rounded-full bg-slate-100 hover:bg-emerald-50 text-slate-800 hover:text-emerald-700 flex items-center justify-center transition-colors cursor-pointer active:scale-95"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+
+              {/* Bolinhas de Paginação com Pílula Ativa */}
+              <div className="flex items-center gap-1.5 px-2">
+                {services.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentIndex(idx)}
+                    aria-label={`Ir para serviço ${idx + 1}`}
+                    className={`transition-all duration-300 rounded-full cursor-pointer ${
+                      idx === currentIndex
+                        ? 'w-7 h-2.5 bg-emerald-600'
+                        : 'w-2.5 h-2.5 bg-slate-300 hover:bg-slate-400'
+                    }`}
+                  />
+                ))}
+              </div>
+
+              {/* Botão Próximo */}
+              <button
+                onClick={nextSlide}
+                aria-label="Próximo serviço"
+                className="w-9 h-9 rounded-full bg-slate-100 hover:bg-emerald-50 text-slate-800 hover:text-emerald-700 flex items-center justify-center transition-colors cursor-pointer active:scale-95"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+
+            </div>
+          </div>
+
         </div>
 
       </div>
