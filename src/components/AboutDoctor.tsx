@@ -28,12 +28,15 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
           }}
         />
 
+        {/* Gradiente no Mobile: Topo transparente para ver o rosto, e transição suave para o azul #edf4fa onde ficam os textos */}
+        <div className="block lg:hidden absolute inset-0 bg-gradient-to-b from-transparent via-[#edf4fa]/80 via-38% to-[#edf4fa] to-55%" />
+        
         {/* Gradiente Desktop: fade suave da foto para o azul na direita */}
         <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-transparent via-[#edf4fa]/80 via-45% to-[#edf4fa] to-65%" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-start pt-2 lg:pt-0">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start pt-2 lg:pt-0">
           
           {/* TOPO NO MOBILE (ESPAÇO DO LUSTRE) / ESQUERDA NO DESKTOP: CARTÃO DE INFORMAÇÕES */}
           <div className="lg:col-span-5 space-y-4">
@@ -44,8 +47,8 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
               transition={{ duration: 0.5 }}
               className="w-full max-w-sm sm:max-w-md mx-auto lg:mx-0"
             >
-              {/* CARTÃO DE INFORMAÇÕES DA DOUTORA NO LUSTRE - TEXTO PRETO/AZUL ESCURO NÍTIDO */}
-              <div className="bg-white/98 backdrop-blur-xl p-4 sm:p-5 rounded-2xl border border-sky-200 shadow-xl text-slate-900 space-y-2.5">
+              {/* CARTÃO DE INFORMAÇÕES DA DOUTORA NO TOPO */}
+              <div className="bg-white/95 backdrop-blur-xl p-4 sm:p-5 rounded-2xl border border-sky-100 shadow-md text-slate-900 space-y-2.5">
                 <div className="flex items-center justify-between gap-2">
                   <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-950 border border-emerald-300 text-[11px] font-extrabold uppercase tracking-wider">
                     <ShieldCheck className="w-3.5 h-3.5 text-emerald-700" />
@@ -85,15 +88,15 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
             </motion.div>
           </div>
 
-          {/* TEXTO: EM CIMA DA ROUPA NO MOBILE, COM FUNDO BRANCO E TODAS AS LETRAS PRETAS/AZUL ESCURO (ZERO CINZA APAGADO) */}
+          {/* LADO DIREITO: TEXTO LIMPO, SEM NENHUM CAIXOTE BRANCO COBRINDO A TELA, DIRETO NO AZUL SUAVE COM LETRAS PRETAS */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-7 space-y-5 sm:space-y-6 text-left mt-20 sm:mt-24 lg:mt-0 bg-white/98 lg:bg-transparent p-6 sm:p-7 lg:p-0 rounded-3xl border border-sky-200 lg:border-none shadow-xl lg:shadow-none backdrop-blur-xl lg:backdrop-blur-none"
+            className="lg:col-span-7 space-y-5 sm:space-y-6 text-left mt-24 sm:mt-28 lg:mt-0"
           >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-navy-100 lg:bg-white text-navy-950 border border-sky-300 text-xs font-extrabold uppercase tracking-wider shadow-xs">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white text-navy-950 border border-sky-300 text-xs font-extrabold uppercase tracking-wider shadow-xs">
               <Award className="w-3.5 h-3.5 text-emerald-700" />
               <span>Autoridade & Dedicação Clínica</span>
             </div>
@@ -112,7 +115,7 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
 
             {/* Destaques Técnicos com Textos Pretos / Alto Contraste */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-              <div className="bg-slate-100 lg:bg-white p-4 rounded-2xl border border-slate-200 shadow-xs space-y-1">
+              <div className="bg-white/90 p-4 rounded-2xl border border-sky-100 shadow-xs space-y-1">
                 <div className="flex items-center gap-2 text-navy-950 font-extrabold text-xs sm:text-sm">
                   <GraduationCap className="w-4 h-4 text-emerald-700" />
                   <span>Rigor Técnico & Científico</span>
@@ -120,7 +123,7 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
                 <p className="text-xs text-slate-900 font-medium">Protocolos clínicos atualizados para avaliação de deglutição no leito/mesa.</p>
               </div>
 
-              <div className="bg-slate-100 lg:bg-white p-4 rounded-2xl border border-slate-200 shadow-xs space-y-1">
+              <div className="bg-white/90 p-4 rounded-2xl border border-sky-100 shadow-xs space-y-1">
                 <div className="flex items-center gap-2 text-navy-950 font-extrabold text-xs sm:text-sm">
                   <Heart className="w-4 h-4 text-rose-600" />
                   <span>Atendimento Humanizado</span>
