@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-display: 'Syne', sans-serif;
+    --font-serif: 'Instrument Serif', Georgia, serif;
+    --font-hand: 'Caveat', cursive;
+  }
+}
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-display: 'Syne', sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-hand: 'Caveat', cursive;
+
+  --color-navy-50: #f0f4f9;
+  --color-navy-100: #dce4f2;
+  --color-navy-200: #bccce5;
+  --color-navy-300: #91acd3;
+  --color-navy-400: #6086bd;
+  --color-navy-500: #3d66a6;
+  --color-navy-600: #2c4f8b;
+  --color-navy-700: #254072;
+  --color-navy-800: #1b2f54;
+  --color-navy-900: #0f1c34;
+  --color-navy-950: #091021;
+
+  --color-onyx-900: #0a0a0c;
+  --color-onyx-950: #040405;
+}
+
+/* Liquid Glass CSS Class as requested */
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.06);
+  background-blend-mode: luminosity;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.15) 20%, transparent 40%, transparent 60%, rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.5) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Dark variant liquid glass */
+.liquid-glass-dark {
+  background: rgba(9, 16, 33, 0.65);
+  background-blend-mode: luminosity;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-glass-dark::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.08) 20%, transparent 40%, transparent 60%, rgba(255,255,255,0.08) 80%, rgba(255,255,255,0.3) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Custom Keyframe Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2.5s infinite;
+}
+
+/* Glassmorphism Blur Classes */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.glass-card-dark {
+  background: rgba(15, 28, 52, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.glass-card-light {
+  background: rgba(248, 250, 252, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+/* Graffiti & Handwritten Accent Badges */
+.handwriting {
+  font-family: var(--font-hand);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-serif-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #0f1c34;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #1b2f54;
+}
