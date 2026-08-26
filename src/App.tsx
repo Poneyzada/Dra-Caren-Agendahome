@@ -9,7 +9,7 @@ import { CareProcess } from './components/CareProcess';
 import { InteractiveChecklist } from './components/InteractiveChecklist';
 import { FAQSection } from './components/FAQSection';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
-import { MobileStickyBar } from './components/MobileStickyBar';
+import { MobileStickyBar } from './components/mobile/MobileStickyBar';
 import { Footer } from './components/Footer';
 import { TriagingModal } from './components/TriagingModal';
 
@@ -34,7 +34,7 @@ export function App() {
 
       {/* Main Content */}
       <main>
-        <Hero onOpenTriagingModal={() => handleOpenTriagingModal()} />
+        <Hero onOpenTriagingModal={handleOpenTriagingModal} />
         <AlertRibbon onOpenTriagingModal={handleOpenTriagingModal} />
         <Services onOpenTriagingModal={handleOpenTriagingModal} />
         <HomeCareHighlight onOpenTriagingModal={handleOpenTriagingModal} />
