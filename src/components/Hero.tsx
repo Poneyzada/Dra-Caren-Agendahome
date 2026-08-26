@@ -51,10 +51,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTriagingModal }) => {
               Atendimento fonoaudiológico <span className="relative inline-block text-navy-900 underline decoration-emerald-400 decoration-4 underline-offset-4">na sua casa</span> para idosos com doenças neurológicas e disfagia.
             </h1>
 
-            {/* Organic Vibe Badge */}
+            {/* Clinical Focus Badge */}
             <div className="inline-block relative">
-              <span className="handwriting text-lg sm:text-2xl text-navy-900 font-bold tracking-wide inline-block bg-white/95 backdrop-blur-md px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl shadow-xs border border-slate-200/80">
-                ✨ Disfagia & Alimentação Segura no Lar
+              <span className="text-xs sm:text-sm font-bold text-navy-950 tracking-wide inline-flex items-center gap-2 bg-emerald-50 text-emerald-950 px-4 py-2 rounded-full shadow-xs border border-emerald-200/80">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span>Disfagia & Alimentação Segura no Lar</span>
               </span>
             </div>
 
