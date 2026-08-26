@@ -8,67 +8,83 @@ interface AboutDoctorProps {
 
 export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal }) => {
   return (
-    <section id="sobre" className="relative py-20 md:py-32 overflow-hidden bg-gradient-to-b from-slate-50 via-white to-sky-50/30 text-slate-900 min-h-[600px] flex items-center border-y border-slate-200/80">
-      
-      {/* 🖼️ FOTO DA DRA. CAREN COMO FUNDO DA DOBRA - BRILHANTE, CLARA & 100% VISÍVEL NO MOBILE & DESKTOP */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <img 
-          src="/dra-caren.webp" 
-          alt="Dra. Caren Stefany - Fonoaudióloga" 
-          loading="eager"
-          decoding="async"
-          className="w-full h-full object-cover object-top lg:object-left-top opacity-70 sm:opacity-80 lg:opacity-90 filter brightness-105 contrast-105"
-          onError={(e) => {
-            const target = e.currentTarget;
-            if (!target.dataset.triedFallback) {
-              target.dataset.triedFallback = 'true';
-              target.src = '/caren-stefany.jpg';
-            }
-          }}
-        />
-
-        {/* Gradientes Clientes & Suaves para Manter o Fundo Claro & Garantir Leitura do Texto */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/80 to-white lg:from-transparent lg:via-white/90 lg:to-white" />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-transparent to-white/90" />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+    <section id="sobre" className="py-20 md:py-28 bg-gradient-to-b from-slate-50 via-white to-sky-50/30 text-slate-900 relative overflow-hidden border-y border-slate-200/80">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           
-          {/* Left Column: Espaço da Foto com Badge Flutuante sem caixa fechada */}
-          <div className="lg:col-span-5 space-y-6 pt-32 lg:pt-0">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-              className="inline-block"
-            >
-              {/* Badge Elegante Flutuando sobre a Foto Clara de Fundo */}
-              <div className="bg-white/95 backdrop-blur-xl p-4 sm:p-5 rounded-2xl border border-slate-200/90 shadow-xl max-w-sm text-slate-900">
-                <div className="flex items-center gap-2 mb-1.5">
-                  <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-navy-900">
-                    Fonoaudiologia Domiciliar
-                  </span>
-                </div>
-                <h3 className="text-lg font-bold font-display text-slate-900">Dra. Caren Stefany</h3>
-                <p className="text-xs text-emerald-700 font-semibold mb-2">Especialista em Disfagia & Neurofuncional</p>
-                <p className="text-[11px] text-slate-600 leading-relaxed border-t border-slate-100 pt-2 flex items-center gap-1.5">
-                  <Home className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                  <span>Atendimento em Itatiba, Bragança Paulista & Morungaba</span>
-                </p>
-              </div>
-            </motion.div>
-          </div>
+          {/* Left Column: Doctor Portrait - Face 100% Visible & Uncovered */}
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="lg:col-span-5 relative"
+          >
+            <div className="relative mx-auto max-w-sm sm:max-w-md lg:max-w-none">
+              
+              {/* Soft Ambient Depth Glow */}
+              <div className="absolute -inset-2 bg-gradient-to-tr from-sky-300/30 via-emerald-300/20 to-navy-900/20 rounded-3xl blur-2xl opacity-50 pointer-events-none" />
 
-          {/* Right Text Column: Autoridade & Informações Clínicas em Fundo Claro */}
+              {/* Doctor Photo - Perfectly framed so her face & head are 100% uncovered */}
+              <div className="relative rounded-3xl overflow-hidden aspect-[4/5] w-full flex items-center justify-center shadow-xl border border-slate-200/80">
+                
+                <img 
+                  src="/dra-caren.webp" 
+                  alt="Dra. Caren Stefany - Fonoaudióloga" 
+                  loading="eager"
+                  decoding="async"
+                  className="w-full h-full object-cover object-top"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (!target.dataset.triedFallback) {
+                      target.dataset.triedFallback = 'true';
+                      target.src = '/caren-stefany.jpg';
+                    }
+                  }}
+                />
+
+                {/* Soft gradient bottom blend */}
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/85 via-navy-950/10 to-transparent pointer-events-none" />
+
+                {/* Floating Glass Doctor Badge positioned strictly at chest/blazer level (Zero Face Overlap!) */}
+                <div className="absolute bottom-4 left-4 right-4 z-10">
+                  <div className="glass-card-dark p-3.5 rounded-2xl border border-white/20 shadow-2xl text-white backdrop-blur-xl">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="flex items-center gap-1.5">
+                          <h3 className="font-bold text-xs sm:text-sm text-white font-display">Dra. Caren Stefany</h3>
+                          <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 fill-emerald-400/20" />
+                        </div>
+                        <p className="text-[10px] sm:text-[11px] text-sky-200 font-medium">Especialista em Disfagia e Neurofuncional</p>
+                      </div>
+                      <span className="text-[9px] sm:text-[10px] uppercase font-bold text-emerald-400 bg-emerald-950/90 border border-emerald-500/30 px-2 py-0.5 rounded-md">
+                        CRFa Ativo
+                      </span>
+                    </div>
+
+                    <div className="pt-2 mt-2 border-t border-white/10 flex items-center justify-between text-[10px] sm:text-[11px] text-slate-300">
+                      <span className="flex items-center gap-1 text-slate-200">
+                        <Home className="w-3 h-3 text-emerald-400" />
+                        <span>Atendimento em Domicílio</span>
+                      </span>
+                      <span className="text-sky-300 font-semibold">(11) 993771-1353</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </motion.div>
+
+          {/* Right Text Column: Authority & Clinical Details - Clean Layout with Zero Photo Clipping */}
           <motion.div 
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="lg:col-span-7 space-y-5 sm:space-y-6 text-left bg-white/90 lg:bg-transparent p-5 sm:p-0 rounded-2xl border lg:border-none border-slate-200/80 shadow-lg lg:shadow-none backdrop-blur-md lg:backdrop-blur-none"
+            className="lg:col-span-7 space-y-5 sm:space-y-6 text-left"
           >
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-navy-100 text-navy-900 border border-navy-200 text-xs font-bold uppercase tracking-wider">
               <Award className="w-3.5 h-3.5 text-emerald-600" />
@@ -87,9 +103,9 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
               Levar a reabilitação até a casa do paciente elimina os riscos e o desgaste físico de viagens até consultórios, além de permitir um treinamento muito mais eficaz com os cuidadores na cozinha da própria família.
             </p>
 
-            {/* Feature Cards no Fundo Claro */}
+            {/* Feature Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-              <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200/90 space-y-1">
+              <div className="bg-white p-3.5 rounded-xl border border-slate-200/90 shadow-xs space-y-1">
                 <div className="flex items-center gap-2 text-navy-900 font-bold text-xs sm:text-sm">
                   <GraduationCap className="w-4 h-4 text-emerald-600" />
                   <span>Rigor Técnico & Científico</span>
@@ -97,7 +113,7 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
                 <p className="text-[11px] text-slate-500">Protocolos clínicos atualizados para avaliação de deglutição no leito/mesa.</p>
               </div>
 
-              <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200/90 space-y-1">
+              <div className="bg-white p-3.5 rounded-xl border border-slate-200/90 shadow-xs space-y-1">
                 <div className="flex items-center gap-2 text-navy-900 font-bold text-xs sm:text-sm">
                   <Heart className="w-4 h-4 text-rose-500" />
                   <span>Atendimento Humanizado</span>
