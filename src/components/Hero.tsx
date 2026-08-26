@@ -12,7 +12,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTriagingModal }) => {
   return (
     <section className="relative min-h-[85vh] lg:min-h-screen pt-24 pb-16 md:pt-40 md:pb-28 overflow-hidden bg-gradient-to-b from-slate-50 via-white to-sky-50/30 text-slate-900 flex items-center">
       
-      {/* PERFORMANCE OPTIMIZED VIDEO: Loaded only on desktop/tablet to make mobile initial load 0.1s fast */}
+      {/* PERFORMANCE OPTIMIZED VIDEO: Loaded only on desktop/tablet */}
       <video
         autoPlay
         loop
@@ -27,7 +27,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTriagingModal }) => {
         />
       </video>
 
-      {/* MOBILE LIGHTWEIGHT NEURAL MESH BACKGROUND (Zero loading lag on 4G/5G) */}
+      {/* MOBILE LIGHTWEIGHT NEURAL MESH BACKGROUND */}
       <div className="md:hidden absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-100/60 via-emerald-50/40 to-transparent pointer-events-none -z-10" />
 
       {/* Ambient Gradient Blurs */}
@@ -50,12 +50,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTriagingModal }) => {
               <span className="truncate">Itatiba, Bragança Paulista & Morungaba</span>
             </div>
 
-            {/* Main Headline - Mobile Optimized Sizing */}
+            {/* Main Headline */}
             <h1 className="text-2xl sm:text-4xl lg:text-5xl font-display font-extrabold text-slate-900 tracking-tight leading-[1.2]">
               Atendimento fonoaudiológico <span className="relative inline-block text-navy-900 underline decoration-emerald-400 decoration-4 underline-offset-4">na sua casa</span> para idosos com doenças neurológicas e disfagia.
             </h1>
 
-            {/* Organic Vibe Badge - Soft Mobile Scale */}
+            {/* Organic Vibe Badge */}
             <div className="inline-block relative">
               <span className="handwriting text-lg sm:text-2xl text-navy-900 font-bold tracking-wide inline-block bg-white/95 backdrop-blur-md px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl shadow-xs border border-slate-200/80">
                 ✨ Disfagia & Alimentação Segura no Lar
@@ -131,7 +131,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTriagingModal }) => {
               </a>
             </div>
 
-            {/* Mobile Bottom Quick Stats */}
+            {/* Quick Stats */}
             <div className="pt-4 border-t border-slate-200/80 grid grid-cols-2 gap-3">
               <div className="bg-white p-3 rounded-xl border border-slate-200/80 text-left">
                 <p className="text-base sm:text-2xl font-bold text-slate-900 font-display">100% Presencial</p>
@@ -145,7 +145,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTriagingModal }) => {
 
           </motion.div>
 
-          {/* Right Column: Doctor Card (Mobile Optimized Zoom & Instant WebP Loading) */}
+          {/* Right Column: Doctor Portrait Directly on Section Fold (NO OUTER WHITE BOX / NO CAIXA / NO BORDAS DE QUADRADO) */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -154,60 +154,58 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTriagingModal }) => {
           >
             <div className="relative mx-auto max-w-sm sm:max-w-md lg:max-w-none">
               
-              <div className="absolute -inset-1 bg-gradient-to-tr from-sky-300/20 via-emerald-300/20 to-navy-700/10 rounded-2xl blur-xl opacity-30 pointer-events-none" />
-              
-              <div className="relative bg-white rounded-2xl sm:rounded-3xl p-3 sm:p-5 border border-slate-200/90 shadow-xl overflow-hidden">
+              {/* Soft Ambient Depth Glow behind portrait */}
+              <div className="absolute -inset-2 bg-gradient-to-tr from-sky-400/30 via-emerald-400/20 to-navy-900/20 rounded-3xl blur-2xl opacity-50 pointer-events-none" />
+
+              {/* Photo Container Directly on Dobra (No outer white box container!) */}
+              <div className="relative rounded-3xl overflow-hidden aspect-[4/5] max-h-[380px] sm:max-h-none flex items-center justify-center shadow-2xl">
                 
-                {/* Doctor Image Container with Eager Mobile Loading & Crisp Zoom */}
-                <div className="relative rounded-xl sm:rounded-2xl overflow-hidden bg-slate-900 aspect-[4/5] max-h-[360px] sm:max-h-none flex items-center justify-center border border-slate-200">
-                  
-                  <img 
-                    src="/dra-caren.webp" 
-                    alt="Dra. Caren Stefany - Fonoaudióloga Especialista em Disfagia" 
-                    loading="eager"
-                    decoding="async"
-                    className="w-full h-full object-cover object-top"
-                    onError={(e) => {
-                      // Fallback logic if browser fails webp
-                      const target = e.currentTarget;
-                      if (!target.dataset.triedFallback) {
-                        target.dataset.triedFallback = 'true';
-                        target.src = '/caren-stefany.jpg';
-                      }
-                    }}
-                  />
+                <img 
+                  src="/dra-caren.webp" 
+                  alt="Dra. Caren Stefany - Fonoaudióloga Especialista em Disfagia" 
+                  loading="eager"
+                  decoding="async"
+                  className="w-full h-full object-cover object-top"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (!target.dataset.triedFallback) {
+                      target.dataset.triedFallback = 'true';
+                      target.src = '/caren-stefany.jpg';
+                    }
+                  }}
+                />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-950/85 via-transparent to-transparent pointer-events-none" />
+                {/* Soft gradient bottom blend */}
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/85 via-navy-950/20 to-transparent pointer-events-none" />
 
-                  {/* Doctor Info Glass Card */}
-                  <div className="absolute bottom-3 left-3 right-3 z-10">
-                    <div className="glass-card-dark p-3 rounded-xl border border-white/20 shadow-lg text-white">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <div className="flex items-center gap-1">
-                            <h3 className="font-bold text-xs sm:text-sm text-white font-display">Dra. Caren Stefany</h3>
-                            <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 fill-emerald-400/20" />
-                          </div>
-                          <p className="text-[10px] sm:text-[11px] text-sky-200 font-medium">Especialista em Disfagia</p>
+                {/* Floating Glass Doctor Badge overlaying bottom of photo */}
+                <div className="absolute bottom-4 left-4 right-4 z-10">
+                  <div className="glass-card-dark p-3.5 rounded-2xl border border-white/20 shadow-2xl text-white backdrop-blur-xl">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="flex items-center gap-1.5">
+                          <h3 className="font-bold text-xs sm:text-sm text-white font-display">Dra. Caren Stefany</h3>
+                          <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 fill-emerald-400/20" />
                         </div>
-                        <span className="text-[9px] sm:text-[10px] uppercase font-bold text-emerald-400 bg-emerald-950/90 border border-emerald-500/30 px-2 py-0.5 rounded-md">
-                          Home Care
-                        </span>
+                        <p className="text-[10px] sm:text-[11px] text-sky-200 font-medium">Especialista em Disfagia e Neurofuncional</p>
                       </div>
+                      <span className="text-[9px] sm:text-[10px] uppercase font-bold text-emerald-400 bg-emerald-950/90 border border-emerald-500/30 px-2 py-0.5 rounded-md">
+                        Home Care
+                      </span>
+                    </div>
 
-                      <div className="pt-1.5 mt-1.5 border-t border-white/10 flex items-center justify-between text-[10px] sm:text-[11px] text-slate-300">
-                        <span className="flex items-center gap-1 text-slate-200">
-                          <Home className="w-3 h-3 text-emerald-400" />
-                          <span>Em Domicílio</span>
-                        </span>
-                        <span className="text-sky-300 font-semibold">(11) 993771-1353</span>
-                      </div>
+                    <div className="pt-2 mt-2 border-t border-white/10 flex items-center justify-between text-[10px] sm:text-[11px] text-slate-300">
+                      <span className="flex items-center gap-1 text-slate-200">
+                        <Home className="w-3 h-3 text-emerald-400" />
+                        <span>Atendimento em Domicílio</span>
+                      </span>
+                      <span className="text-sky-300 font-semibold">(11) 993771-1353</span>
                     </div>
                   </div>
-
                 </div>
 
               </div>
+
             </div>
           </motion.div>
 

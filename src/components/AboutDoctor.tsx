@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Heart, Award, GraduationCap, Mail, Phone, Home, ShieldCheck, FileSpreadsheet } from 'lucide-react';
+import { Heart, Award, GraduationCap, Home, ShieldCheck, FileSpreadsheet } from 'lucide-react';
 
 interface AboutDoctorProps {
   onOpenTriagingModal?: (serviceTitle?: string) => void;
@@ -13,7 +13,7 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Left Doctor Card Showcase */}
+          {/* Left Doctor Portrait Showcase (NO OUTER WHITE BOX CONTAINER / SEM CAIXA BRANCA OU QUADRADO DE BORDA) */}
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -21,61 +21,54 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
             transition={{ duration: 0.7 }}
             className="lg:col-span-5 relative"
           >
-            <div className="relative mx-auto max-w-md">
-              <div className="relative bg-white rounded-3xl p-5 border border-slate-200/90 shadow-2xl overflow-hidden text-slate-900">
+            <div className="relative mx-auto max-w-sm sm:max-w-md lg:max-w-none">
+              
+              {/* Soft Ambient Depth Glow behind portrait */}
+              <div className="absolute -inset-2 bg-gradient-to-tr from-sky-300/30 via-emerald-300/20 to-navy-900/20 rounded-3xl blur-2xl opacity-50 pointer-events-none" />
+
+              {/* Photo Portrait Directly on Section Fold (No outer box frame!) */}
+              <div className="relative rounded-3xl overflow-hidden aspect-[4/5] max-h-[420px] sm:max-h-none flex items-center justify-center shadow-2xl border border-slate-200/50">
                 
-                <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-gradient-to-b from-navy-950 via-navy-900 to-slate-900 flex items-center justify-center border border-slate-200">
-                  
-                  <img 
-                    src="/dra-caren.webp" 
-                    alt="Dra. Caren Stefany - Fonoaudióloga" 
-                    className="w-full h-full object-cover object-top"
-                  />
+                <img 
+                  src="/dra-caren.webp" 
+                  alt="Dra. Caren Stefany - Fonoaudióloga" 
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover object-top"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (!target.dataset.triedFallback) {
+                      target.dataset.triedFallback = 'true';
+                      target.src = '/caren-stefany.jpg';
+                    }
+                  }}
+                />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/85 via-navy-950/20 to-transparent pointer-events-none" />
 
-                  {/* Doctor Info Glass Card */}
-                  <div className="absolute bottom-4 left-4 right-4 z-10">
-                    <div className="glass-card-dark p-3.5 rounded-xl border border-white/20 shadow-xl text-white">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <div className="flex items-center gap-1.5">
-                            <h3 className="font-bold text-sm tracking-wide text-white font-display">Dra. Caren Stefany</h3>
-                            <ShieldCheck className="w-4 h-4 text-emerald-400 fill-emerald-400/20" />
-                          </div>
-                          <p className="text-[11px] text-sky-200 font-medium">Especialista em Disfagia e Neurofuncional</p>
+                {/* Floating Glass Doctor Badge overlaying bottom of photo */}
+                <div className="absolute bottom-4 left-4 right-4 z-10">
+                  <div className="glass-card-dark p-3.5 rounded-2xl border border-white/20 shadow-2xl text-white backdrop-blur-xl">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="flex items-center gap-1.5">
+                          <h3 className="font-bold text-xs sm:text-sm text-white font-display">Dra. Caren Stefany</h3>
+                          <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 fill-emerald-400/20" />
                         </div>
-                        <span className="text-[10px] uppercase font-bold text-emerald-400 bg-emerald-950/80 border border-emerald-500/30 px-2 py-0.5 rounded-md">
-                          CRFa Ativo
-                        </span>
+                        <p className="text-[10px] sm:text-[11px] text-sky-200 font-medium">Especialista em Disfagia e Neurofuncional</p>
                       </div>
-
-                      <div className="pt-2 mt-2 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-300">
-                        <span className="flex items-center gap-1 text-slate-200 font-medium">
-                          <Home className="w-3 h-3 text-emerald-400" />
-                          <span>Atendimento em Domicílio</span>
-                        </span>
-                        <span className="text-sky-300 font-semibold">(11) 993771-1353</span>
-                      </div>
+                      <span className="text-[9px] sm:text-[10px] uppercase font-bold text-emerald-400 bg-emerald-950/90 border border-emerald-500/30 px-2 py-0.5 rounded-md">
+                        CRFa Ativo
+                      </span>
                     </div>
-                  </div>
 
-                </div>
-
-                <div className="pt-4 space-y-2 border-t border-slate-100 mt-2 text-xs text-slate-600">
-                  <div className="flex items-center gap-2">
-                    <Home className="w-3.5 h-3.5 text-emerald-600" />
-                    <span>Itatiba, Bragança Paulista, Morungaba e região</span>
-                  </div>
-                  <div className="flex items-center justify-between pt-1">
-                    <span className="flex items-center gap-2">
-                      <Phone className="w-3.5 h-3.5 text-navy-800" />
-                      <span>(11) 993771-1353</span>
-                    </span>
-                    <span className="flex items-center gap-1 text-slate-500">
-                      <Mail className="w-3.5 h-3.5 text-navy-800" />
-                      <span>fgacarenstefany@gmail.com</span>
-                    </span>
+                    <div className="pt-2 mt-2 border-t border-white/10 flex items-center justify-between text-[10px] sm:text-[11px] text-slate-300">
+                      <span className="flex items-center gap-1 text-slate-200">
+                        <Home className="w-3 h-3 text-emerald-400" />
+                        <span>Atendimento em Domicílio</span>
+                      </span>
+                      <span className="text-sky-300 font-semibold">(11) 993771-1353</span>
+                    </div>
                   </div>
                 </div>
 
