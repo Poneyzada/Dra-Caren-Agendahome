@@ -141,7 +141,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTriagingModal }) => {
 
           </motion.div>
 
-          {/* Right Column: Doctor Card (Clean Light Aesthetic) */}
+          {/* Right Column: Doctor Card (Using real /dra-caren.webp photo) */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -158,44 +158,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTriagingModal }) => {
                 <div className="relative rounded-2xl overflow-hidden bg-gradient-to-b from-navy-950 via-navy-900 to-slate-900 aspect-[4/5] flex items-center justify-center border border-slate-200">
                   
                   <img 
-                    src="/caren-stefany.jpg" 
+                    src="/dra-caren.webp" 
                     alt="Dra. Caren Stefany - Fonoaudióloga Especialista em Disfagia" 
                     className="w-full h-full object-cover object-top"
-                    onError={(e) => {
-                      e.currentTarget.style.display = 'none';
-                      const parent = e.currentTarget.parentElement;
-                      if (parent && !parent.querySelector('.svg-fallback-hero-light')) {
-                        const fallbackDiv = document.createElement('div');
-                        fallbackDiv.className = 'svg-fallback-hero-light w-full h-full flex flex-col items-center justify-between p-8 text-center bg-gradient-to-b from-navy-900 via-slate-900 to-black text-white relative';
-                        fallbackDiv.innerHTML = `
-                          <div class="relative z-10 pt-4">
-                            <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-white/10 backdrop-blur-md border border-white/20 text-sky-200">
-                              Dra. Caren Stefany
-                            </span>
-                          </div>
-
-                          <div class="relative z-10 my-auto py-6 flex flex-col items-center">
-                            <div class="w-32 h-32 sm:w-36 sm:h-36 rounded-full bg-gradient-to-br from-navy-700 via-navy-900 to-slate-950 p-1.5 shadow-2xl border-2 border-white/20 relative">
-                              <div class="w-full h-full rounded-full bg-navy-950 flex items-center justify-center overflow-hidden relative">
-                                <svg class="w-24 h-24 text-sky-100 mt-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                  <path d="M12 11c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z" fill="rgba(255,255,255,0.1)"/>
-                                  <path d="M18 21v-2a4 4 0 0 0-4-4h-4a4 4 0 0 0-4 4v2" stroke="currentColor"/>
-                                  <path d="M8 14s.5 2 4 2 4-2 4-2" stroke="#38bdf8" stroke-width="2"/>
-                                </svg>
-                              </div>
-                            </div>
-                            <div class="mt-4 space-y-1">
-                              <h3 class="text-xl font-bold font-display text-white">Dra. Caren Stefany</h3>
-                              <p class="text-xs text-sky-200 font-medium">Fonoaudióloga | Especialista em Disfagia</p>
-                            </div>
-                          </div>
-                        `;
-                        parent.appendChild(fallbackDiv);
-                      }
-                    }}
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent pointer-events-none" />
 
                   {/* Doctor Info Glass Card */}
                   <div className="absolute bottom-4 left-4 right-4 z-10">

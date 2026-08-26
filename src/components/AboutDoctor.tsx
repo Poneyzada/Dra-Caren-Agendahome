@@ -27,47 +27,12 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
                 <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-gradient-to-b from-navy-950 via-navy-900 to-slate-900 flex items-center justify-center border border-slate-200">
                   
                   <img 
-                    src="/caren-stefany.jpg" 
+                    src="/dra-caren.webp" 
                     alt="Dra. Caren Stefany - Fonoaudióloga" 
                     className="w-full h-full object-cover object-top"
-                    onError={(e) => {
-                      e.currentTarget.style.display = 'none';
-                      const parent = e.currentTarget.parentElement;
-                      if (parent && !parent.querySelector('.svg-fallback-about-light')) {
-                        const fallbackDiv = document.createElement('div');
-                        fallbackDiv.className = 'svg-fallback-about-light w-full h-full flex flex-col items-center justify-between p-6 text-center bg-gradient-to-b from-navy-900 via-slate-900 to-black text-white relative';
-                        fallbackDiv.innerHTML = `
-                          <div class="relative z-10 pt-2">
-                            <span class="inline-block px-3 py-1 rounded-full text-[11px] font-bold bg-white/10 border border-white/20 text-sky-200 uppercase tracking-wider">
-                              Fonoaudiologia 100% Domiciliar
-                            </span>
-                          </div>
-
-                          <div class="relative z-10 my-auto py-4 flex flex-col items-center">
-                            <div class="w-32 h-32 rounded-full bg-gradient-to-br from-navy-700 to-navy-950 p-1 shadow-2xl border border-sky-400/40 relative flex items-center justify-center">
-                              <div class="w-full h-full rounded-full bg-navy-950 flex items-center justify-center overflow-hidden">
-                                <svg class="w-20 h-20 text-sky-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                  <path d="M12 11c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z" fill="rgba(56,189,248,0.15)"/>
-                                  <path d="M18 21v-2a4 4 0 0 0-4-4h-4a4 4 0 0 0-4 4v2" stroke="currentColor"/>
-                                </svg>
-                              </div>
-                            </div>
-                            <h3 class="text-xl font-bold font-display text-white mt-4">Dra. Caren Stefany</h3>
-                            <p class="text-xs text-sky-300 font-medium">Especialista em Disfagia & Reabilitação</p>
-                          </div>
-
-                          <div class="relative z-10 pb-1 w-full">
-                            <div class="bg-emerald-950/80 backdrop-blur-md rounded-xl p-3 text-center border border-emerald-500/30 text-xs text-emerald-300 font-bold">
-                              🏡 Itatiba, Bragança & Morungaba
-                            </div>
-                          </div>
-                        `;
-                        parent.appendChild(fallbackDiv);
-                      }
-                    }}
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent pointer-events-none" />
 
                   {/* Doctor Info Glass Card */}
                   <div className="absolute bottom-4 left-4 right-4 z-10">
