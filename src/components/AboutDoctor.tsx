@@ -8,16 +8,16 @@ interface AboutDoctorProps {
 
 export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal }) => {
   return (
-    <section id="sobre" className="relative py-20 md:py-32 overflow-hidden bg-slate-900 text-white min-h-[600px] flex items-center border-y border-slate-800">
+    <section id="sobre" className="relative py-20 md:py-32 overflow-hidden bg-slate-900 text-white min-h-[650px] flex items-center border-y border-slate-800">
       
-      {/* 🖼️ FOTO DA DRA. CAREN COMO O FUNDO REAL DA DOBRA (SEM NENHUM QUADRADO, SEM NENHUMA CAIXA) */}
+      {/* 🖼️ FOTO DA DRA. CAREN COMO FUNDO COM ROSTO POSICIONADO À ESQUERDA (100% VISÍVEL E SEM TEXTO POR CIMA DO ROSTO) */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <img 
           src="/dra-caren.webp" 
           alt="Dra. Caren Stefany - Fonoaudióloga" 
           loading="eager"
           decoding="async"
-          className="w-full h-full object-cover object-top opacity-35 filter brightness-110 contrast-105"
+          className="w-full h-full object-cover object-[center_15%] lg:object-[20%_top] opacity-45 filter brightness-110 contrast-105"
           onError={(e) => {
             const target = e.currentTarget;
             if (!target.dataset.triedFallback) {
@@ -27,24 +27,24 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
           }}
         />
 
-        {/* Gradiente de Fusão com a Dobra para Leitura Impecável */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/90 to-slate-950/95 lg:from-slate-950/40 lg:via-slate-950/85 lg:to-slate-950" />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/90 via-transparent to-slate-950" />
+        {/* Gradiente Inteligente: Mantém a esquerda (onde está a Dra. Caren) visível e a direita limpa para o texto */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/30 via-slate-950/85 to-slate-950 lg:from-transparent lg:via-slate-950/80 lg:to-slate-950" />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-transparent to-slate-950/90" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
-          {/* Coluna Esquerda Limpa (Sem nenhuma foto em caixa/quadrado!) */}
-          <div className="hidden lg:block lg:col-span-4" />
+          {/* Coluna Esquerda Reservada para a Foto da Dra. Caren de Fundo (Sem cobrir o rosto dela!) */}
+          <div className="hidden lg:block lg:col-span-5 h-[400px]" />
 
-          {/* Coluna de Texto de Autoridade */}
+          {/* Coluna Direita: Texto de Autoridade com 100% de Legibilidade */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="lg:col-span-8 space-y-5 sm:space-y-6 text-left"
+            className="lg:col-span-7 space-y-5 sm:space-y-6 text-left pt-36 lg:pt-0"
           >
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold uppercase tracking-wider">
               <Award className="w-3.5 h-3.5 text-emerald-400" />
