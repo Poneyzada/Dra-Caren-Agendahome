@@ -13,7 +13,7 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Left Doctor Portrait Showcase (DIRECTLY ON SECTION FOLD - ZERO BOX / ZERO MARGIN WRAPPER) */}
+          {/* Left Doctor Portrait - Sitting Directly on White Fold without any Container Box */}
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -23,11 +23,8 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
           >
             <div className="relative mx-auto max-w-xs sm:max-w-md lg:max-w-none">
               
-              {/* Ambient Glow behind portrait */}
-              <div className="absolute -inset-2 bg-gradient-to-tr from-sky-300/30 via-emerald-300/20 to-navy-900/20 rounded-3xl blur-2xl opacity-50 pointer-events-none" />
-
-              {/* Photo Portrait Directly on Section Fold (Zero box container / zero white frame) */}
-              <div className="relative rounded-3xl overflow-hidden aspect-[4/5] w-full flex items-center justify-center shadow-2xl">
+              {/* Raw Photo Portrait Directly on Section Background */}
+              <div className="relative rounded-3xl overflow-hidden aspect-[4/5] w-full flex items-center justify-center shadow-lg">
                 
                 <img 
                   src="/dra-caren.webp" 
@@ -48,7 +45,7 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
 
                 {/* Floating Glass Doctor Badge overlaying bottom of photo */}
                 <div className="absolute bottom-4 left-4 right-4 z-10">
-                  <div className="glass-card-dark p-3.5 rounded-2xl border border-white/20 shadow-2xl text-white backdrop-blur-xl">
+                  <div className="glass-card-dark p-3.5 rounded-2xl border border-white/20 shadow-xl text-white backdrop-blur-xl">
                     <div className="flex items-center justify-between">
                       <div>
                         <div className="flex items-center gap-1.5">
