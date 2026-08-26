@@ -8,17 +8,17 @@ interface AboutDoctorProps {
 
 export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal }) => {
   return (
-    /* DOBRA COM AZUL SUAVE / LEVE (bg-[#edf4fa]) - SEM AZUL ESCURO PESADO */
+    /* SEÇÃO COM AZUL SUAVE / LEVE (#edf4fa) */
     <section id="sobre" className="relative py-16 md:py-28 bg-[#edf4fa] text-slate-900 overflow-hidden border-y border-sky-100 min-h-[680px] flex items-center">
       
-      {/* 🖼️ A FOTO DA DRA. CAREN É O FUNDO DA DOBRA (SEM CAIXA, SEM QUADRADO, TOTALMENTE INTEGRADA) */}
+      {/* 🖼️ A FOTO DA DRA. CAREN É O FUNDO DA DOBRA (SUBIDA PARA CENTRALIZAR O ROSTO E ELIMINAR ESPAÇO VAZIO DO LUSTRE) */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <img 
           src="/dra-caren.webp" 
           alt="Dra. Caren Stefany - Fonoaudióloga" 
           loading="eager"
           decoding="async"
-          className="w-full h-full object-cover object-top lg:object-[16%_top] filter brightness-100 contrast-105"
+          className="w-full h-full object-cover object-[center_36%] lg:object-[16%_32%] filter brightness-100 contrast-105"
           onError={(e) => {
             const target = e.currentTarget;
             if (!target.dataset.triedFallback) {
@@ -28,16 +28,16 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
           }}
         />
 
-        {/* Gradiente no Mobile: topo 100% transparente para ver a Dra. Caren nítida, fundindo suavemente para o azul leve embaixo */}
-        <div className="block lg:hidden absolute inset-0 bg-gradient-to-b from-transparent via-[#edf4fa]/60 via-35% to-[#edf4fa] to-58%" />
+        {/* Gradiente no Mobile: topo 100% transparente para ver a cabeça e rosto da Dra. Caren com nitidez, fundindo suavemente para o azul leve embaixo */}
+        <div className="block lg:hidden absolute inset-0 bg-gradient-to-b from-transparent via-[#edf4fa]/50 via-28% to-[#edf4fa] to-50%" />
         
         {/* Gradiente no Desktop: esquerda transparente para ver ela em tamanho real no fundo, fundindo suavemente para o azul leve na direita */}
         <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-transparent via-[#edf4fa]/80 via-45% to-[#edf4fa] to-65%" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        {/* No mobile, o padding superior abre espaço para a foto dela no topo sem texto cobrindo */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center pt-[270px] sm:pt-[340px] lg:pt-0">
+        {/* No mobile, ajustamos o espaçamento para o card ficar abaixo do queixo/busto da Dra. Caren */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center pt-[210px] sm:pt-[260px] lg:pt-0">
           
           {/* LADO ESQUERDO: Card de Destaque com as informações dela (SEM foto dentro de quadrado!) */}
           <div className="lg:col-span-5 space-y-4">
@@ -46,7 +46,7 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="w-full max-w-md mx-auto lg:mx-0"
+              className="w-full max-w-sm sm:max-w-md mx-auto lg:mx-0"
             >
               {/* CARD COM AS INFORMAÇÕES EM DESTAQUE DA DOUTORA */}
               <div className="bg-white/95 backdrop-blur-xl p-5 sm:p-6 rounded-3xl border border-sky-100 shadow-xl text-slate-900 space-y-3">
