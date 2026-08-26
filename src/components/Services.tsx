@@ -94,7 +94,7 @@ export const Services: React.FC<ServicesProps> = ({ onOpenTriagingModal }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Title Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 space-y-3 sm:space-y-4">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 md:mb-20 space-y-3 sm:space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100 text-emerald-950 border border-emerald-300 text-xs font-bold uppercase tracking-wider">
             <Home className="w-3.5 h-3.5 text-emerald-700" />
             <span>Todos os Atendimentos São Realizados em Domicílio</span>
@@ -112,8 +112,8 @@ export const Services: React.FC<ServicesProps> = ({ onOpenTriagingModal }) => {
         {/* 📱 CARROSSEL 3D COVERFLOW COM CONTROLES */}
         <div className="relative max-w-2xl mx-auto">
           
-          {/* Container dos Cards com Suporte a Swipe / Arrastar */}
-          <div className="relative min-h-[580px] sm:min-h-[540px] flex items-center justify-center">
+          {/* Container dos Cards com Altura Ajustada para Não Cobrir o Número */}
+          <div className="relative min-h-[630px] sm:min-h-[570px] md:min-h-[590px] flex items-center justify-center">
             <AnimatePresence mode="popLayout">
               {services.map((service, index) => {
                 const offset = index - currentIndex;
@@ -161,7 +161,7 @@ export const Services: React.FC<ServicesProps> = ({ onOpenTriagingModal }) => {
                       isActive ? 'cursor-default' : 'hover:opacity-60 transition-opacity'
                     }`}
                   >
-                    <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-2xl space-y-5 text-left">
+                    <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/90 shadow-2xl space-y-4 sm:space-y-5 text-left">
                       
                       {/* Top Header Card: Icon + Badge */}
                       <div className="flex items-center justify-between gap-3">
@@ -222,8 +222,8 @@ export const Services: React.FC<ServicesProps> = ({ onOpenTriagingModal }) => {
             </AnimatePresence>
           </div>
 
-          {/* 🔢 NÚMERO GRANDE + CONTADOR (Exatamente igual ao print enviado: 01 DE 04) */}
-          <div className="text-center mt-6 sm:mt-8 space-y-1">
+          {/* 🔢 NÚMERO GRANDE + CONTADOR COM ESPAÇO ADEQUADO (SEM COLIDIR COM O CARD) */}
+          <div className="text-center mt-8 sm:mt-10 md:mt-12 space-y-1">
             <div className="text-4xl sm:text-5xl font-black text-navy-950 font-display tracking-tight">
               {String(currentIndex + 1).padStart(2, '0')}
             </div>
