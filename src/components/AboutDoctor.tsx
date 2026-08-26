@@ -8,7 +8,7 @@ interface AboutDoctorProps {
 
 export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal }) => {
   return (
-    <section id="sobre" className="py-20 md:py-28 bg-slate-50 relative overflow-hidden">
+    <section id="sobre" className="py-20 md:py-28 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -22,9 +22,9 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
             className="lg:col-span-5 relative"
           >
             <div className="relative mx-auto max-w-md">
-              <div className="relative bg-navy-950 rounded-3xl p-5 border border-navy-800 shadow-2xl overflow-hidden text-white">
+              <div className="relative bg-white rounded-3xl p-5 border border-slate-200/90 shadow-2xl overflow-hidden text-slate-900">
                 
-                <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-gradient-to-b from-navy-900 via-slate-900 to-navy-950 flex items-center justify-center border border-navy-800">
+                <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-gradient-to-b from-navy-950 via-navy-900 to-slate-900 flex items-center justify-center border border-slate-200">
                   
                   <img 
                     src="/caren-stefany.jpg" 
@@ -33,9 +33,9 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';
                       const parent = e.currentTarget.parentElement;
-                      if (parent && !parent.querySelector('.svg-fallback-about-clean')) {
+                      if (parent && !parent.querySelector('.svg-fallback-about-light')) {
                         const fallbackDiv = document.createElement('div');
-                        fallbackDiv.className = 'svg-fallback-about-clean w-full h-full flex flex-col items-center justify-between p-6 text-center bg-gradient-to-b from-navy-900 via-navy-950 to-slate-950 text-white relative';
+                        fallbackDiv.className = 'svg-fallback-about-light w-full h-full flex flex-col items-center justify-between p-6 text-center bg-gradient-to-b from-navy-900 via-slate-900 to-black text-white relative';
                         fallbackDiv.innerHTML = `
                           <div class="relative z-10 pt-2">
                             <span class="inline-block px-3 py-1 rounded-full text-[11px] font-bold bg-white/10 border border-white/20 text-sky-200 uppercase tracking-wider">
@@ -45,7 +45,7 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
 
                           <div class="relative z-10 my-auto py-4 flex flex-col items-center">
                             <div class="w-32 h-32 rounded-full bg-gradient-to-br from-navy-700 to-navy-950 p-1 shadow-2xl border border-sky-400/40 relative flex items-center justify-center">
-                              <div class="w-full h-full rounded-full bg-navy-900 flex items-center justify-center overflow-hidden">
+                              <div class="w-full h-full rounded-full bg-navy-950 flex items-center justify-center overflow-hidden">
                                 <svg class="w-20 h-20 text-sky-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                   <path d="M12 11c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z" fill="rgba(56,189,248,0.15)"/>
                                   <path d="M18 21v-2a4 4 0 0 0-4-4h-4a4 4 0 0 0-4 4v2" stroke="currentColor"/>
@@ -67,36 +67,50 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
                     }}
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent pointer-events-none" />
-                </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent pointer-events-none" />
 
-                <div className="pt-4 space-y-3">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <div className="flex items-center gap-1.5">
-                        <h3 className="font-bold text-base text-white font-display">Dra. Caren Stefany</h3>
-                        <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                  {/* Doctor Info Glass Card */}
+                  <div className="absolute bottom-4 left-4 right-4 z-10">
+                    <div className="glass-card-dark p-3.5 rounded-xl border border-white/20 shadow-xl text-white">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <div className="flex items-center gap-1.5">
+                            <h3 className="font-bold text-sm tracking-wide text-white font-display">Dra. Caren Stefany</h3>
+                            <ShieldCheck className="w-4 h-4 text-emerald-400 fill-emerald-400/20" />
+                          </div>
+                          <p className="text-[11px] text-sky-200 font-medium">Especialista em Disfagia e Neurofuncional</p>
+                        </div>
+                        <span className="text-[10px] uppercase font-bold text-emerald-400 bg-emerald-950/80 border border-emerald-500/30 px-2 py-0.5 rounded-md">
+                          CRFa Ativo
+                        </span>
                       </div>
-                      <p className="text-xs text-sky-300 font-semibold">Fonoaudióloga | Especialista em Disfagia</p>
+
+                      <div className="pt-2 mt-2 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-300">
+                        <span className="flex items-center gap-1 text-slate-200 font-medium">
+                          <Home className="w-3 h-3 text-emerald-400" />
+                          <span>Atendimento em Domicílio</span>
+                        </span>
+                        <span className="text-sky-300 font-semibold">(11) 993771-1353</span>
+                      </div>
                     </div>
-                    <span className="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[10px] font-bold uppercase tracking-wider">
-                      CRFa Ativo
-                    </span>
                   </div>
 
-                  <div className="pt-3 border-t border-navy-800 text-xs text-slate-300 space-y-1.5">
-                    <div className="flex items-center gap-2">
-                      <Home className="w-3.5 h-3.5 text-emerald-400" />
-                      <span>Itatiba, Bragança Paulista, Morungaba e região</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Phone className="w-3.5 h-3.5 text-sky-400" />
+                </div>
+
+                <div className="pt-4 space-y-2 border-t border-slate-100 mt-2 text-xs text-slate-600">
+                  <div className="flex items-center gap-2">
+                    <Home className="w-3.5 h-3.5 text-emerald-600" />
+                    <span>Itatiba, Bragança Paulista, Morungaba e região</span>
+                  </div>
+                  <div className="flex items-center justify-between pt-1">
+                    <span className="flex items-center gap-2">
+                      <Phone className="w-3.5 h-3.5 text-navy-800" />
                       <span>(11) 993771-1353</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Mail className="w-3.5 h-3.5 text-sky-400" />
+                    </span>
+                    <span className="flex items-center gap-1 text-slate-500">
+                      <Mail className="w-3.5 h-3.5 text-navy-800" />
                       <span>fgacarenstefany@gmail.com</span>
-                    </div>
+                    </span>
                   </div>
                 </div>
 
@@ -112,8 +126,8 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
             transition={{ duration: 0.7 }}
             className="lg:col-span-7 space-y-6"
           >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-navy-900 text-white text-xs font-bold uppercase tracking-wider">
-              <Award className="w-3.5 h-3.5 text-emerald-400" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-navy-100 text-navy-900 text-xs font-bold uppercase tracking-wider border border-navy-200">
+              <Award className="w-3.5 h-3.5 text-emerald-600" />
               <span>Autoridade & Dedicação Clínica</span>
             </div>
 
@@ -130,7 +144,7 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-              <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs space-y-1">
+              <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 shadow-xs space-y-1">
                 <div className="flex items-center gap-2 text-navy-900 font-bold text-sm">
                   <GraduationCap className="w-4 h-4 text-emerald-600" />
                   <span>Rigor Técnico & Científico</span>
@@ -138,7 +152,7 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
                 <p className="text-xs text-slate-500">Protocolos clínicos atualizados para avaliação de deglutição no leito/mesa.</p>
               </div>
 
-              <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs space-y-1">
+              <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 shadow-xs space-y-1">
                 <div className="flex items-center gap-2 text-navy-900 font-bold text-sm">
                   <Heart className="w-4 h-4 text-rose-500" />
                   <span>Atendimento Humanizado</span>
@@ -148,7 +162,7 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
             </div>
 
             <div className="pt-2">
-              <span className="handwriting text-2xl text-navy-800 font-bold">
+              <span className="handwriting text-2xl text-navy-900 font-bold">
                 ✎ "Cada paciente é único. Minha missão é cuidar para que a alimentação no lar volte a ser um momento de paz."
               </span>
             </div>

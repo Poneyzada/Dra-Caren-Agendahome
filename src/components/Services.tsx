@@ -77,7 +77,7 @@ export const Services: React.FC<ServicesProps> = ({ onOpenTriagingModal }) => {
   ];
 
   return (
-    <section id="servicos" className="py-20 md:py-28 bg-slate-50 relative">
+    <section id="servicos" className="py-20 md:py-28 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Title Header */}
@@ -141,7 +141,7 @@ export const Services: React.FC<ServicesProps> = ({ onOpenTriagingModal }) => {
                 </ul>
               </div>
 
-              {/* Action Button: Opens Triaging Modal to qualify patient & location before Wpp */}
+              {/* Action Button */}
               <div className="pt-2">
                 <button
                   onClick={() => onOpenTriagingModal && onOpenTriagingModal(service.title)}
@@ -157,29 +157,29 @@ export const Services: React.FC<ServicesProps> = ({ onOpenTriagingModal }) => {
           ))}
         </div>
 
-        {/* Fluid Banner Callout */}
-        <div className="mt-12 bg-navy-950 rounded-3xl p-8 sm:p-10 text-white border border-navy-800 shadow-xl relative overflow-hidden">
+        {/* Soft Light Banner Callout */}
+        <div className="mt-12 bg-gradient-to-r from-sky-50/80 via-white to-emerald-50/80 rounded-3xl p-8 sm:p-10 text-slate-900 border border-slate-200/90 shadow-lg relative overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
             <div className="lg:col-span-8 space-y-3">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold uppercase tracking-wider">
-                <Sparkles className="w-3.5 h-3.5" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold uppercase tracking-wider border border-emerald-200">
+                <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
                 <span>Atendimento no Próprio Lar (Itatiba, Bragança & Morungaba)</span>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-bold font-display text-white">
+              <h3 className="text-2xl sm:text-3xl font-bold font-display text-slate-900">
                 Segurança, praticidade e reabilitação na rotina real da família.
               </h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                Na clínica, o idoso fica tenso e fora da sua rotina. No <strong className="text-white">Atendimento Domiciliar</strong>, a Dra. Caren avalia a postura na cadeira que o paciente usa todos os dias, a textura das comidas que a família prepara e capacita quem cuida diretamente no lar.
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Na clínica, o idoso fica tenso e fora da sua rotina. No <strong className="text-navy-900">Atendimento Domiciliar</strong>, a Dra. Caren avalia a postura na cadeira que o paciente usa todos os dias, a textura das comidas que a família prepara e capacita quem cuida diretamente no lar.
               </p>
             </div>
 
             <div className="lg:col-span-4 flex flex-col gap-3">
               <button
                 onClick={() => onOpenTriagingModal && onOpenTriagingModal('Triagem Domiciliar Geral')}
-                className="w-full inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-sm py-4 px-6 rounded-xl transition-all shadow-lg text-center cursor-pointer active:scale-[0.99]"
+                className="w-full inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm py-4 px-6 rounded-xl transition-all shadow-md text-center cursor-pointer active:scale-[0.99]"
               >
                 <FileSpreadsheet className="w-5 h-5" />
-                <span>Fazer Triagem Domiciliar (1 min)</span>
+                <span>Fazer Triagem Domiciliar</span>
               </button>
             </div>
           </div>
