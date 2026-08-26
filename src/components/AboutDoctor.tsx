@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Heart, Award, GraduationCap, ShieldCheck, FileSpreadsheet, Home } from 'lucide-react';
+import { Heart, Award, GraduationCap, ShieldCheck, FileSpreadsheet } from 'lucide-react';
 
 interface AboutDoctorProps {
   onOpenTriagingModal?: (serviceTitle?: string) => void;
@@ -10,7 +10,7 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
   return (
     <section id="sobre" className="relative py-24 md:py-32 overflow-hidden bg-navy-950 text-white min-h-[650px] flex items-center border-y border-navy-800">
       
-      {/* 🖼️ FOTO DA DRA. CAREN COMO FUNDO DA DOBRA (IGUAL O VÍDEO DO HERO, SEM CAIXA, SEM QUADRADO) */}
+      {/* 🖼️ FOTO DA DRA. CAREN COMO FUNDO DA DOBRA DO PRINT (IGUAL O VÍDEO DO HERO, SEM CAIXA, SEM QUADRADO) */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <img 
           src="/dra-caren.webp" 
