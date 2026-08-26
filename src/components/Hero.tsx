@@ -157,7 +157,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTriagingModal }) => {
               <div className="relative rounded-3xl overflow-hidden aspect-[4/5] w-full flex items-center justify-center shadow-2xl">
                 
                 <img 
-                  src="/dra-caren.webp" 
+                  src="/Dra-caren-hero1.webp" 
                   alt="Dra. Caren Stefany - Fonoaudióloga Especialista em Disfagia" 
                   loading="eager"
                   decoding="async"
