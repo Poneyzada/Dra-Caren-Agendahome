@@ -9,16 +9,16 @@ interface AboutDoctorProps {
 export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal }) => {
   return (
     /* SEÇÃO COM AZUL SUAVE / LEVE (#edf4fa) */
-    <section id="sobre" className="relative py-16 md:py-28 bg-[#edf4fa] text-slate-900 overflow-hidden border-y border-sky-100 min-h-[680px] flex items-center">
+    <section id="sobre" className="relative py-12 md:py-24 bg-[#edf4fa] text-slate-900 overflow-hidden border-y border-sky-100 min-h-[700px] flex items-center">
       
-      {/* 🖼️ A FOTO DA DRA. CAREN É O FUNDO DA DOBRA (SUBIDA PARA CENTRALIZAR O ROSTO E ELIMINAR ESPAÇO VAZIO DO LUSTRE) */}
+      {/* 🖼️ FOTO DA DRA. CAREN NO FUNDO */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <img 
           src="/dra-caren.webp" 
           alt="Dra. Caren Stefany - Fonoaudióloga" 
           loading="eager"
           decoding="async"
-          className="w-full h-full object-cover object-[center_36%] lg:object-[16%_32%] filter brightness-100 contrast-105"
+          className="w-full h-full object-cover object-top lg:object-[16%_top] filter brightness-100 contrast-105"
           onError={(e) => {
             const target = e.currentTarget;
             if (!target.dataset.triedFallback) {
@@ -28,51 +28,51 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
           }}
         />
 
-        {/* Gradiente no Mobile: topo 100% transparente para ver a cabeça e rosto da Dra. Caren com nitidez, fundindo suavemente para o azul leve embaixo */}
-        <div className="block lg:hidden absolute inset-0 bg-gradient-to-b from-transparent via-[#edf4fa]/50 via-28% to-[#edf4fa] to-50%" />
+        {/* Gradiente no Mobile: o topo e o meio são transparentes para ver a Dra. Caren e o card, fundindo suavemente no texto embaixo */}
+        <div className="block lg:hidden absolute inset-0 bg-gradient-to-b from-transparent via-transparent via-45% to-[#edf4fa] to-65%" />
         
-        {/* Gradiente no Desktop: esquerda transparente para ver ela em tamanho real no fundo, fundindo suavemente para o azul leve na direita */}
+        {/* Gradiente no Desktop: esquerda transparente para ver ela no fundo, fundindo suavemente para o azul leve na direita */}
         <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-transparent via-[#edf4fa]/80 via-45% to-[#edf4fa] to-65%" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        {/* No mobile, ajustamos o espaçamento para o card ficar abaixo do queixo/busto da Dra. Caren */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center pt-[210px] sm:pt-[260px] lg:pt-0">
+        {/* pt-2 no mobile posiciona o cartão lá em cima no espaço vazio do lustre */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start pt-2 sm:pt-4 lg:pt-0">
           
-          {/* LADO ESQUERDO: Card de Destaque com as informações dela (SEM foto dentro de quadrado!) */}
+          {/* LADO ESQUERDO: CARTÃO POSICIONADO NO ESPAÇO VAZIO DO LUSTRE NO MOBILE */}
           <div className="lg:col-span-5 space-y-4">
             <motion.div 
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.5 }}
               className="w-full max-w-sm sm:max-w-md mx-auto lg:mx-0"
             >
-              {/* CARD COM AS INFORMAÇÕES EM DESTAQUE DA DOUTORA */}
-              <div className="bg-white/95 backdrop-blur-xl p-5 sm:p-6 rounded-3xl border border-sky-100 shadow-xl text-slate-900 space-y-3">
+              {/* CARTÃO COM AS INFORMAÇÕES DA DOUTORA NO ESPAÇO DO LUSTRE */}
+              <div className="bg-white/95 backdrop-blur-xl p-4 sm:p-5 rounded-2xl border border-sky-100 shadow-xl text-slate-900 space-y-2.5">
                 <div className="flex items-center justify-between gap-2">
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-200 text-xs font-bold uppercase tracking-wider">
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-200 text-[11px] font-bold uppercase tracking-wider">
                     <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
                     <span>CRFa Ativo</span>
                   </div>
-                  <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wide">
+                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wide">
                     Atendimento no Lar
                   </span>
                 </div>
 
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-bold font-display text-navy-950">
+                  <h3 className="text-lg sm:text-xl font-bold font-display text-navy-950">
                     Dra. Caren Stefany
                   </h3>
-                  <p className="text-xs sm:text-sm text-emerald-700 font-semibold mt-0.5">
+                  <p className="text-xs text-emerald-700 font-semibold mt-0.5">
                     Fonoaudióloga | Especialista em Disfagia e Neurofuncional
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-slate-100 space-y-2 text-xs text-slate-600">
+                <div className="pt-2 border-t border-slate-100 space-y-1.5 text-xs text-slate-600">
                   <div className="flex items-center gap-2">
-                    <Home className="w-4 h-4 text-emerald-600 shrink-0" />
-                    <span>Itatiba, Bragança Paulista, Morungaba e região</span>
+                    <Home className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                    <span>Itatiba, Bragança Paulista & Morungaba</span>
                   </div>
                   <div className="flex items-center justify-between pt-1">
                     <span className="flex items-center gap-1.5 font-semibold text-slate-800">
@@ -81,7 +81,7 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
                     </span>
                     <span className="flex items-center gap-1.5 text-slate-500">
                       <Mail className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                      <span className="truncate max-w-[150px]">fgacarenstefany@gmail.com</span>
+                      <span className="truncate max-w-[140px]">fgacarenstefany@gmail.com</span>
                     </span>
                   </div>
                 </div>
@@ -89,13 +89,13 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
             </motion.div>
           </div>
 
-          {/* LADO DIREITO: Texto de autoridade clínica limpo e legível sobre o azul suave */}
+          {/* LADO DIREITO: TEXTO COM MARGEM SUPERIOR NO MOBILE (mt-[280px]) PARA DEIXAR O ROSTO DELA 100% LIVRE NO MEIO */}
           <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-7 space-y-5 sm:space-y-6 text-left"
+            className="lg:col-span-7 space-y-5 sm:space-y-6 text-left mt-[270px] sm:mt-[320px] lg:mt-0"
           >
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white text-navy-900 border border-sky-200 text-xs font-bold uppercase tracking-wider shadow-xs">
               <Award className="w-3.5 h-3.5 text-emerald-600" />
