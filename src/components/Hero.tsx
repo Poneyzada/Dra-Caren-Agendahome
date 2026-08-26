@@ -10,16 +10,16 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTriagingModal }) => {
   const whatsappUrl = "https://wa.me/55119937711353?text=Ol%C3%A1%2C%20Dra.%20Caren!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20fonoaudiol%C3%B3gica%20domiciliar%20em%20Itatiba%2FBragan%C3%A7a%2FMorungaba.";
 
   return (
-    <section className="relative min-h-[85vh] lg:min-h-screen pt-24 pb-16 md:pt-40 md:pb-28 overflow-hidden bg-gradient-to-b from-slate-50 via-white to-sky-50/30 text-slate-900 flex items-center">
+    <section className="relative min-h-[85vh] lg:min-h-screen pt-24 pb-16 md:pt-36 md:pb-24 overflow-hidden bg-gradient-to-b from-slate-50 via-white to-sky-50/30 text-slate-900 flex items-center">
       
-      {/* PERFORMANCE OPTIMIZED VIDEO: Loaded only on desktop/tablet */}
+      {/* LOOPING BACKGROUND VIDEO ACTIVE ON BOTH MOBILE & DESKTOP */}
       <video
         autoPlay
         loop
         muted
         playsInline
-        preload="metadata"
-        className="hidden md:block absolute inset-0 w-full h-full object-cover object-center pointer-events-none opacity-15 mix-blend-multiply"
+        preload="auto"
+        className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none opacity-20 mix-blend-multiply scale-100"
       >
         <source 
           src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260715_082433_69699cf8-444b-4484-93cc-053e57896dfd.mp4" 
@@ -27,25 +27,21 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTriagingModal }) => {
         />
       </video>
 
-      {/* MOBILE LIGHTWEIGHT NEURAL MESH BACKGROUND */}
-      <div className="md:hidden absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-100/60 via-emerald-50/40 to-transparent pointer-events-none -z-10" />
-
       {/* Ambient Gradient Blurs */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[650px] h-[320px] sm:h-[650px] bg-gradient-to-tr from-sky-200/40 via-slate-100/50 to-emerald-100/40 rounded-full blur-3xl pointer-events-none -z-10" />
-      <div className="absolute bottom-5 right-5 w-64 md:w-96 h-64 md:h-96 bg-navy-900/5 rounded-full blur-3xl pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
-          {/* Left Column: Mobile-first Headlines & CTAs */}
+          {/* Left Column: Headlines & CTAs */}
           <motion.div 
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
+            transition={{ duration: 0.5 }}
             className="lg:col-span-7 space-y-4 md:space-y-6 text-left"
           >
-            {/* Top Location Badge */}
-            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-navy-900 text-white text-[11px] sm:text-xs font-bold tracking-wide uppercase shadow-xs max-w-full">
+            {/* Location Pill */}
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-navy-900 text-white text-[11px] sm:text-xs font-bold tracking-wide uppercase shadow-xs">
               <MapPin className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
               <span className="truncate">Itatiba, Bragança Paulista & Morungaba</span>
             </div>
@@ -98,7 +94,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTriagingModal }) => {
               </div>
             </div>
 
-            {/* Mobile First Main CTAs */}
+            {/* CTAs */}
             <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
               {onOpenTriagingModal ? (
                 <button
@@ -145,20 +141,20 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTriagingModal }) => {
 
           </motion.div>
 
-          {/* Right Column: Doctor Portrait Directly on Section Fold (NO OUTER WHITE BOX / NO CAIXA / NO BORDAS DE QUADRADO) */}
+          {/* Right Column: Doctor Portrait Directly on Section Fold (Zero Box/Card Wrapper) */}
           <motion.div 
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="lg:col-span-5 relative mt-4 lg:mt-0"
+            className="lg:col-span-5 relative mt-6 lg:mt-0"
           >
-            <div className="relative mx-auto max-w-sm sm:max-w-md lg:max-w-none">
+            <div className="relative mx-auto max-w-xs sm:max-w-md lg:max-w-none">
               
               {/* Soft Ambient Depth Glow behind portrait */}
               <div className="absolute -inset-2 bg-gradient-to-tr from-sky-400/30 via-emerald-400/20 to-navy-900/20 rounded-3xl blur-2xl opacity-50 pointer-events-none" />
 
-              {/* Photo Container Directly on Dobra (No outer white box container!) */}
-              <div className="relative rounded-3xl overflow-hidden aspect-[4/5] max-h-[380px] sm:max-h-none flex items-center justify-center shadow-2xl">
+              {/* Photo Portrait Directly on Section Fold */}
+              <div className="relative rounded-3xl overflow-hidden aspect-[4/5] w-full flex items-center justify-center shadow-2xl">
                 
                 <img 
                   src="/dra-caren.webp" 
@@ -175,12 +171,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTriagingModal }) => {
                   }}
                 />
 
-                {/* Soft gradient bottom blend */}
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/85 via-navy-950/20 to-transparent pointer-events-none" />
+                {/* Soft bottom shadow overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/85 via-navy-950/15 to-transparent pointer-events-none" />
 
                 {/* Floating Glass Doctor Badge overlaying bottom of photo */}
-                <div className="absolute bottom-4 left-4 right-4 z-10">
-                  <div className="glass-card-dark p-3.5 rounded-2xl border border-white/20 shadow-2xl text-white backdrop-blur-xl">
+                <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 z-10">
+                  <div className="glass-card-dark p-3 sm:p-3.5 rounded-2xl border border-white/20 shadow-2xl text-white backdrop-blur-xl">
                     <div className="flex items-center justify-between">
                       <div>
                         <div className="flex items-center gap-1.5">

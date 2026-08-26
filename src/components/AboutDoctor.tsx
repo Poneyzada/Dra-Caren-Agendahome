@@ -13,7 +13,7 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Left Doctor Portrait Showcase (NO OUTER WHITE BOX CONTAINER / SEM CAIXA BRANCA OU QUADRADO DE BORDA) */}
+          {/* Left Doctor Portrait Showcase (DIRECTLY ON SECTION FOLD - ZERO BOX / ZERO MARGIN WRAPPER) */}
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -21,13 +21,13 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
             transition={{ duration: 0.7 }}
             className="lg:col-span-5 relative"
           >
-            <div className="relative mx-auto max-w-sm sm:max-w-md lg:max-w-none">
+            <div className="relative mx-auto max-w-xs sm:max-w-md lg:max-w-none">
               
-              {/* Soft Ambient Depth Glow behind portrait */}
+              {/* Ambient Glow behind portrait */}
               <div className="absolute -inset-2 bg-gradient-to-tr from-sky-300/30 via-emerald-300/20 to-navy-900/20 rounded-3xl blur-2xl opacity-50 pointer-events-none" />
 
-              {/* Photo Portrait Directly on Section Fold (No outer box frame!) */}
-              <div className="relative rounded-3xl overflow-hidden aspect-[4/5] max-h-[420px] sm:max-h-none flex items-center justify-center shadow-2xl border border-slate-200/50">
+              {/* Photo Portrait Directly on Section Fold (Zero box container / zero white frame) */}
+              <div className="relative rounded-3xl overflow-hidden aspect-[4/5] w-full flex items-center justify-center shadow-2xl">
                 
                 <img 
                   src="/dra-caren.webp" 
@@ -44,7 +44,7 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
                   }}
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/85 via-navy-950/20 to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/85 via-navy-950/15 to-transparent pointer-events-none" />
 
                 {/* Floating Glass Doctor Badge overlaying bottom of photo */}
                 <div className="absolute bottom-4 left-4 right-4 z-10">
