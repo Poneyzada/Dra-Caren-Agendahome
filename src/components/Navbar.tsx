@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { Phone, MessageCircle, Menu, X, FileCheck, ShieldCheck } from 'lucide-react';
 
 interface NavbarProps {
@@ -17,7 +17,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTriagingModal }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const whatsappUrl = "https://wa.me/55119937711353?text=Ol%C3%A1%2C%20Dra.%20Caren!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20fonoaudiol%C3%B3gica%20domiciliar%20em%20Itatiba%2FBragan%C3%A7a%2FMorungaba.";
+  const whatsappUrl = "https://wa.me/5511937711353?text=Ol%C3%A1%2C%20Dra.%20Caren!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20fonoaudiol%C3%B3gica%20domiciliar%20em%20Itatiba%2FBragan%C3%A7a%2FMorungaba.";
 
   return (
     <header 
@@ -64,11 +64,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTriagingModal }) => {
           {/* Action CTAs */}
           <div className="hidden sm:flex items-center gap-4 shrink-0">
             <a 
-              href="tel:119937711353" 
+              href="tel:11937711353" 
               className="hidden xl:flex items-center gap-2 text-xs font-semibold text-slate-700 hover:text-navy-900 px-3 py-2 rounded-lg hover:bg-slate-100 transition-colors"
             >
               <Phone className="w-3.5 h-3.5 text-navy-800" />
-              <span>(11) 993771-1353</span>
+              <span>(11) 93771-1353</span>
             </a>
 
             {onOpenTriagingModal ? (
@@ -179,3 +179,4 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTriagingModal }) => {
     </header>
   );
 };
+

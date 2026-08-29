@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion } from 'framer-motion';
 import { Heart, Award, GraduationCap, ShieldCheck, FileSpreadsheet, Home, Phone, Mail } from 'lucide-react';
 
@@ -93,7 +93,7 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
                   <div className="flex items-center justify-between pt-1">
                     <span className="flex items-center gap-1.5 font-bold text-slate-950">
                       <Phone className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
-                      <span>(11) 993771-1353</span>
+                      <span>(11) 93771-1353</span>
                     </span>
                     <span className="flex items-center gap-1.5 text-slate-900 font-semibold">
                       <Mail className="w-3.5 h-3.5 text-slate-700 shrink-0" />
@@ -175,3 +175,4 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenTriagingModal })
     </section>
   );
 };
+

@@ -1,8 +1,8 @@
-import React from 'react';
+﻿import React from 'react';
 import { Mail, MapPin, ShieldCheck, MessageCircle } from 'lucide-react';
 
 export const Footer: React.FC = () => {
-  const whatsappUrl = "https://wa.me/55119937711353?text=Ol%C3%A1%2C%20Dra.%20Caren!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20em%20Itatiba%2FBragan%C3%A7a%2FMorungaba.";
+  const whatsappUrl = "https://wa.me/5511937711353?text=Ol%C3%A1%2C%20Dra.%20Caren!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20em%20Itatiba%2FBragan%C3%A7a%2FMorungaba.";
 
   return (
     <footer className="bg-navy-950 text-white pt-16 pb-24 md:pb-12 border-t border-navy-800">
@@ -60,7 +60,7 @@ export const Footer: React.FC = () => {
                 <MessageCircle className="w-4 h-4 text-emerald-400 fill-current shrink-0" />
                 <div>
                   <span className="block font-bold text-xs text-white">WhatsApp & Agendamento</span>
-                  <span className="text-[11px] text-slate-300">(11) 993771-1353</span>
+                  <span className="text-[11px] text-slate-300">(11) 93771-1353</span>
                 </div>
               </a>
 
@@ -96,3 +96,4 @@ export const Footer: React.FC = () => {
     </footer>
   );
 };
+

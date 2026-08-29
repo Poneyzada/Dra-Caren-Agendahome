@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { MessageCircle, FileCheck, Phone } from 'lucide-react';
 
 interface MobileStickyBarProps {
@@ -6,7 +6,7 @@ interface MobileStickyBarProps {
 }
 
 export const MobileStickyBar: React.FC<MobileStickyBarProps> = ({ onOpenTriagingModal }) => {
-  const whatsappUrl = "https://wa.me/55119937711353?text=Ol%C3%A1%2C%20Dra.%20Caren!%20Vim%20pelo%20site%20no%20celular%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20domiciliar.";
+  const whatsappUrl = "https://wa.me/5511937711353?text=Ol%C3%A1%2C%20Dra.%20Caren!%20Vim%20pelo%20site%20no%20celular%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20domiciliar.";
 
   return (
     <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-xl border-t border-slate-200/90 p-3 shadow-[0_-8px_20px_rgba(0,0,0,0.1)]">
@@ -14,7 +14,7 @@ export const MobileStickyBar: React.FC<MobileStickyBarProps> = ({ onOpenTriaging
         
         {/* Quick Phone Call Button */}
         <a
-          href="tel:119937711353"
+          href="tel:11937711353"
           aria-label="Ligar para Dra. Caren"
           className="w-12 h-12 rounded-xl bg-slate-100 border border-slate-200 text-navy-950 flex items-center justify-center shrink-0 active:scale-95 transition-transform"
         >
@@ -45,3 +45,4 @@ export const MobileStickyBar: React.FC<MobileStickyBarProps> = ({ onOpenTriaging
     </div>
   );
 };
+

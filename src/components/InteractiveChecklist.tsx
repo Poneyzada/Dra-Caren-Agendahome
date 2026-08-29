@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ClipboardCheck, Square, RotateCcw, MessageCircle, ShieldAlert, ArrowLeft, CheckCircle2 } from 'lucide-react';
 
@@ -187,7 +187,7 @@ export const InteractiveChecklist: React.FC = () => {
                 )}
 
                 <a
-                  href="https://wa.me/55119937711353?text=Ol%C3%A1%2C%20Dra.%20Caren!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20domiciliar%20em%20Itatiba%2FBragan%C3%A7a%2FMorungaba."
+                  href="https://wa.me/5511937711353?text=Ol%C3%A1%2C%20Dra.%20Caren!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20domiciliar%20em%20Itatiba%2FBragan%C3%A7a%2FMorungaba."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-xs font-semibold text-slate-500 hover:text-emerald-700 underline"
@@ -233,7 +233,7 @@ export const InteractiveChecklist: React.FC = () => {
               {/* Send Result Button */}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
                 <a
-                  href={`https://wa.me/55119937711353?text=${getWppSummaryMessage()}`}
+                  href={`https://wa.me/5511937711353?text=${getWppSummaryMessage()}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-8 py-4 rounded-2xl shadow-xl transition-all text-sm active:scale-[0.99]"
@@ -260,3 +260,4 @@ export const InteractiveChecklist: React.FC = () => {
     </section>
   );
 };
+

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion } from 'framer-motion';
 import { ShieldCheck, MessageCircle, Home, Heart, ArrowRight, Activity, FileSpreadsheet, MapPin } from 'lucide-react';
 
@@ -7,7 +7,7 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenTriagingModal }) => {
-  const whatsappUrl = "https://wa.me/55119937711353?text=Ol%C3%A1%2C%20Dra.%20Caren!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20fonoaudiol%C3%B3gica%20domiciliar%20em%20Itatiba%2FBragan%C3%A7a%2FMorungaba.";
+  const whatsappUrl = "https://wa.me/5511937711353?text=Ol%C3%A1%2C%20Dra.%20Caren!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20fonoaudiol%C3%B3gica%20domiciliar%20em%20Itatiba%2FBragan%C3%A7a%2FMorungaba.";
 
   return (
     <section className="relative min-h-[85vh] lg:min-h-screen pt-24 pb-16 md:pt-36 md:pb-24 overflow-hidden bg-gradient-to-b from-slate-50 via-white to-sky-50/30 text-slate-900 flex items-center">
@@ -196,7 +196,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTriagingModal }) => {
                         <Home className="w-3 h-3 text-emerald-400" />
                         <span>Atendimento em Domicílio</span>
                       </span>
-                      <span className="text-sky-300 font-semibold">(11) 993771-1353</span>
+                      <span className="text-sky-300 font-semibold">(11) 93771-1353</span>
                     </div>
                   </div>
                 </div>
@@ -211,3 +211,4 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTriagingModal }) => {
     </section>
   );
 };
+

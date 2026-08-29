@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ClipboardCheck, ArrowLeft, MessageCircle, ShieldAlert, CheckCircle2 } from 'lucide-react';
 
@@ -204,7 +204,7 @@ export const TriagingModal: React.FC<TriagingModalProps> = ({ isOpen, onClose, i
                 )}
 
                 <a
-                  href={`https://wa.me/55119937711353?text=Ol%C3%A1%2C%20Dra.%20Caren!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20domiciliar%20em%20Itatiba%2FBragan%C3%A7a%2FMorungaba.`}
+                  href={`https://wa.me/5511937711353?text=Ol%C3%A1%2C%20Dra.%20Caren!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20domiciliar%20em%20Itatiba%2FBragan%C3%A7a%2FMorungaba.`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-xs font-semibold text-slate-500 hover:text-emerald-700 underline ml-auto"
@@ -237,7 +237,7 @@ export const TriagingModal: React.FC<TriagingModalProps> = ({ isOpen, onClose, i
 
               <div className="flex flex-col gap-3 pt-2">
                 <a
-                  href={`https://wa.me/55119937711353?text=${getStructuredWppMessage()}`}
+                  href={`https://wa.me/5511937711353?text=${getStructuredWppMessage()}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full inline-flex items-center justify-center gap-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 px-6 rounded-2xl shadow-xl text-sm transition-all active:scale-[0.99]"
@@ -261,3 +261,4 @@ export const TriagingModal: React.FC<TriagingModalProps> = ({ isOpen, onClose, i
     </AnimatePresence>
   );
 };
+
